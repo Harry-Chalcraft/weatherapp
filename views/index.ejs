@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
+    <title></title>
+  </head>
+  <body>
+    <div class = 'container' id='layout'>
+      <div class= 'row'>
+        <div class="col-12 navItem">
+          <nav class="navbar navbar-light bg-light">
+              <a href="/users/logout" class="btn btn-outline-warning mb-2">Logout</a>
+              <h6>Welcome <%=user.username%>!</h6>
+          </nav>
+        </div>
+        <div class ='offset-lg-6 col-lg-6' id='search'>          
+          <h6>Ville</h6>
+          <form action='/add-city' method='POST'>
+            <input type='text' placeholder='Paris, Lyon..' name='name' value='' id='inputcity'>
+            <button type="submit" class="btn btn-warning" id='btn'>Enregistrer</button>
+          </form>
+        </div>
+
+        <div class = 'col-lg-6'>
+          <div id="worldmap"></div>
+        </div>
+
+        <div class='col-lg-6'>
+          <div class="list-group">
+            <% for (var i=0; i<cityList.length;i++){%>
+            <div class="list-group-item " data-cityname="<%=cityList[i].name%>" data-lat=<%=cityList[i].latitude%> data-lon=<%=cityList[i].longitude%>>
+              <div class= 'col-2 city'><%=cityList[i].name%></div>
+              <div class='offset-1 col-6'>
+                <img src=<%=cityList[i].img%> alt="meteo">
+                <span><%=cityList[i].desc%></span>
+                <span class="badge badge-warning"><%=cityList[i].temp_min%>°C</span>
+                <span class="badge badge-secondary"><%=cityList[i].temp_max%>°C</span>
+              </div>
+              <div class= 'offset-2 col-1'>
+                <a href='/delete-city?id=<%=cityList[i]._id%>'><i class="far fa-times-circle" id='close'></i></a>
+              </div>
+            </div>
+            <%}%>
+
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <script src="../javascripts/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
