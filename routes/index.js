@@ -24,7 +24,10 @@ router.get('/cities', function(req, res, next) {
 
 router.post('/add-city', function(req, res, next){
   //We send a request to the API with the name of the city from the frontend and then save the response in our database
-  request('http://api.openweathermap.org/data/2.5/weather?q='+req.body.name+'&appid=fc07f13e149c30c7f3bc9c87c606a95f&units=metric&lang=fr', function(error, response, body) {
+
+  var apiKey= //Your openweathermap API key
+
+  request('http://api.openweathermap.org/data/2.5/weather?q='+req.body.name+'&appid='+apiKey, function(error, response, body) {
     body = JSON.parse(body);
     if(body.cod!='404'){
       var newCity = new CityModel ({
