@@ -4,7 +4,7 @@ A live weather app with a leaflet map
 Go **[here](https://nameless-castle-27658.herokuapp.com/)** for live demo.
 
 This is a simple website developed entirely on NodeJS. We use the ExpressJS framework and ejs templates for the views which are responsive.
-The Sign-In, Sign-Up is set up with a Mongo DB, and the weather information is collected thanks to the openweathermap API for live forecast.
+The Sign-In, Sign-Up is set up with a Mongo DB, and the weather information is collected thanks to the [openweathermap API](https://openweathermap.org/) for live forecast.(the API request here will collect the information in french, you can customize this in your request).
 
 The user's cities are saved on a Mongo DB, and the entire back-end is organised accordingly with MVC.
 
